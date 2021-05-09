@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :chatrooms do
+    resource :chatroom_users
+    # singular pois é um controller para o current user especifico(pesquisar a respeito).
+    # ele esta nestado mas oq ele faz é apenas join e leaving (create and delete).
+  end
+
+  root to: 'chatrooms#index'
 end
